@@ -1,6 +1,7 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user! #Devise提供的方法，檢查使用者是否登入
   before_action :authenticate_admin #手工定義的方法，檢查使用者是否為管理者
+  before_action :set_restaurant, only: [:show, :edit, :update]
 
   def index
     @restaurants = Restaurant.all
@@ -21,13 +22,23 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
+  def update
+    if @restaurant.update(restaurant_params)
+      flash[:notice] = "restaurant was successfully update"
+      redirect_to admin_restaurants_path(@restaurant)
+    else
+      falsh.now[:alert] = "restaurant was failed to update"
+      render :edit
+    end
   end
 
   private
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :opening_hours, :tel, :adress, :description)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 end
