@@ -1,7 +1,7 @@
 class Admin::RestaurantsController < ApplicationController
   before_action :authenticate_user! #Devise提供的方法，檢查使用者是否登入
   before_action :authenticate_admin #手工定義的方法，檢查使用者是否為管理者
-  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -32,10 +32,16 @@ class Admin::RestaurantsController < ApplicationController
     end
   end
 
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+    flash[:alert] = "restaurant was deleted"
+  end
+
   private
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :opening_hours, :tel, :adress, :description)
+    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
   end
 
   def set_restaurant
