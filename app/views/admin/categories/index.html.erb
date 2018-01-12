@@ -13,8 +13,13 @@
 
       <div class= "form-inline">
         <%= form_for [:admin, @category] do |f| %>
-          <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+          <div class="form-group">
+            <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
+          </div>
           <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+        <% if @category.errors.any? %>
+          <%= @category.errors.full_messages.to_sentence %>
         <% end %>
       </div>
 
@@ -24,6 +29,7 @@
           <tr>
             <th></th>
             <th>Category Name</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -32,6 +38,7 @@
           <tr>
             <th><%= category.id %></th>
             <td><%= category.name %></td>
+            <td><%= link_to 'Edit', admin_categories_path(id: category.id) %></td>
           </tr>
           <% end %>
         </tbody>
