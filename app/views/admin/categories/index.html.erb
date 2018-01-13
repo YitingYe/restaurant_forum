@@ -13,9 +13,9 @@
 
       <div class= "form-inline">
         <%= form_for [:admin, @category] do |f| %>
-          <!-- <div class="form-group"> -->
+          <div class="form-group">
             <%= f.text_field :name, placeholder: "Category Name", class: "form-control" %>
-          <!-- </div> -->
+          </div>
           <%= f.submit class: "btn btn-primary" %>
         <% end %>
         <% if @category.errors.any? %>
@@ -40,7 +40,7 @@
             <td><%= category.name %></td>
             <td>
               <%= link_to 'Edit', admin_categories_path(id: category.id) %>
-              <%= link_to 'Delete', admin_categories_path(category), method: :delete, data: {confirm: "Are you sure?"} %>
+              <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"} %>
             </td>
 
           </tr>
