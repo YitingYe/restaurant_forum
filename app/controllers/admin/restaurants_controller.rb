@@ -1,5 +1,4 @@
-class Admin::RestaurantsController < ApplicationController
-  before_action :authenticate_admin #手工定義的方法，檢查使用者是否為管理者
+class Admin::RestaurantsController < Admin::BaseController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
