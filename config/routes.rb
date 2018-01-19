@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [:show, :edit]
+
   resources :restaurants, only: [:index, :show]  
   root "restaurants#index"
 
@@ -10,8 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: :show
-
-  resources :users, only: [:show, :edit]
 
   namespace :admin do
     resources :restaurants
