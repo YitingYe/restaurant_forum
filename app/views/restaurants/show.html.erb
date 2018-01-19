@@ -33,10 +33,17 @@
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
         <em><%= time_ago_in_words(comment.created_at) %> </em>
+      
+      <% if current_user.admin? %>
+        <%= link_to "Delete", restaurant_comment_path(@restaurant, comment), method: :delete %>
+      <% end %>
+
       </p>
     </div>
     <hr>
     <% end %>
+
+
 
    <%= form_for [@restaurant, @comment] do |f| %>
     <div class="form-group">
@@ -47,5 +54,7 @@
       <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
     </div>
   <% end %>
+
+
   </div>
 </div>
