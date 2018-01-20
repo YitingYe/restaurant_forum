@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users, only: [:show, :edit]
+  resources :users, only: [:show, :edit, :upload]
 
   resources :restaurants, only: [:index, :show]  
   root "restaurants#index"
