@@ -1,5 +1,13 @@
-<%= image_tag @user.avatar,width: '600px' %>
-<%= @user.name %>
-<%= @user.email %>
-<%= @user.intro %>
-<%= link_to "Edit Profile", edit_user_path %>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-6">
+        <%= image_tag @user.avatar, class: "img-responsive" %>
+      </div>
+      <div class="col-sm-6">
+        <h1><%= @user.name %></h1>
+        <h4><%= @user.email %></h4>
+        <p><%= @user.intro %></p>
+        <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+      </div>
+  </div>
+</div>
