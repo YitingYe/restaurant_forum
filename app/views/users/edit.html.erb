@@ -6,6 +6,10 @@
   <%= f.label :intro, "Introduction" %>
   <%= f.text_area :intro %>
 
+  <%= f.label :avatar, "Image" %>
+  <%= image_tag @user.avatar, width: '300px' if @user.avatar? %>
+  <%= f.file_field :avatar %>
+
   <%= f.submit %>
   
 <% end %>
