@@ -1,0 +1,11 @@
+<%= form_for @user do |f| %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label :intro, "Introduction" %>
+  <%= f.text_area :intro %>
+
+  <%= f.submit %>
+  
+<% end %>
