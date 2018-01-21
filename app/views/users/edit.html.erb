@@ -18,8 +18,7 @@
         <%= image_tag @user.avatar, width: '200px' if @user.avatar? %>
         <%= f.file_field :avatar %>
       </div>
-
-        <%= f.submit "Update", class: "btn btn-primary"%>
+        <%= f.submit "Update", class: "btn btn-primary" %>
         <%= link_to "Cancel", user_path(@user), class: "btn btn-warning" %>
     <% end %>
   </div>
