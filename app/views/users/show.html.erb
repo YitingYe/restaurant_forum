@@ -1,15 +1,49 @@
 <div class="container">
   <div class="row">
-      <div class="col-sm-6">
-        <%= image_tag @user.avatar, class: "img-responsive" %>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="page-header">
+
+        <div class="col-sm-6">
+          <%= image_tag @user.avatar, class: "img-responsive" %>
+        </div>
+
+        <div class="col-sm-6">
+          <h1><%= @user.name %></h1>
+          <h4><%= @user.email %></h4>
+          <p><%= @user.intro %></p>
+          <% if @user == current_user %>
+            <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+        <div class="clearfix"></div>
+
       </div>
-      <div class="col-sm-6">
-        <h1><%= @user.name %></h1>
-        <h4><%= @user.email %></h4>
-        <p><%= @user.intro %></p>
-        <% if @user == current_user %>
-          <%= link_to "Edit Profile", edit_user_path, class: "btn btn-primary" %>
-        <% end %>
+    
+      <br />
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h3 class="panel-title">已評論餐廳</h3>
+        </div>
+
+        <div class="panel-body">
+
+          <% @commented_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path do%> 
+                <div class="my-restaurant">
+                  <div>
+                    <%= image_tag restaurant.image, class: "img-responsive img-rounded" %>
+                  </div>
+                    <%= restaurant.name %>
+                </div>  
+            <% end %>
+          <% end %>
+
+        </div>
+
       </div>
+    </div>
   </div>
 </div>
