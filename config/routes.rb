@@ -4,11 +4,18 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
-  resources :restaurants, only: [:index, :show]  
   root "restaurants#index"
 
   resources :restaurants, only: [:index, :show] do
-    resources :comments, only: [:create, :destroy] 
+    resources :comments, only: [:create, :destroy]
+
+    collection do
+      get :feeds
+    end 
+
+    member do
+      get :dashboard
+    end
   end
 
   resources :categories, only: :show
