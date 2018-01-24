@@ -15,4 +15,8 @@ class Restaurant < ApplicationRecord
     self.favorited_users.include?(user)
   end
 
+  def is_like?(user)
+    self.like_users.include?(user)
+  end
+
 end
