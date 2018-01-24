@@ -1,7 +1,23 @@
 <div class="container">
   <div class="row">
 
-    <ul class="nav nav-tabs nav-tabs-center">
+    <ul class="nav nav-tabs">
+      <li role="presention" class="active">
+        <%= link_to 'HOME', root_path %>
+      </li>
+      <li role="presention">
+        <%= link_to 'NEW', feeds_restaurants_path %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br />
+
+<div class="container">
+  <div class="row">
+
+    <ul class="nav nav-pills nav-tabs-center">
       <li role="presentation"><%= link_to "全部餐廳", root_path %></li>
       <% @categories.each do |category| %>
         <li role="presentation" class="<%= "active" if category == @category %>">
