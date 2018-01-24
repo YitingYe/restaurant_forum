@@ -37,7 +37,7 @@
           <div class="panel-body">
           <% @recent_comments.each do |comment| %>
           <h4><%= link_to comment.restaurant.name, restaurant_path(comment.restaurant) %></h4>
-          <p><%= comment.content%></p>
+          <p><%= comment.content %></p>
           <p><%= link_to comment.user.name, user_path(comment.user) %></p>
           <hr />
           <% end %>
