@@ -3,6 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :comments
   has_many :restaurants, through: :comments
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_restaurants, through: :favorites,source: :restaurant
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   mount_uploader :avatar, AvatarUploader
